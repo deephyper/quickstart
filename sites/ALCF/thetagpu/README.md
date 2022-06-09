@@ -34,11 +34,11 @@ This will submit a job on ThetaGPU, wait for it to finish (you can follow the in
 To execute the search, first locate yourself in ``sites/ALCF/thetagpu/src/`` :
 
 ```console
-cd sites/ALCF/thetagpu/src/
+$ cd sites/ALCF/thetagpu/src/
 ```
 
 You then simply have to submit the ``job-script.sh`` script (again replace the ``$PROJECT_NAME`` with the name of your project allocation, e-g: ``-A datascience``):
 
 ```console
-qsub-gpu -A $PROJECT_NAME job-script.sh
+$ qsub-gpu -A $PROJECT_NAME job-script.sh
 ```
