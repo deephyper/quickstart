@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     from deephyper.evaluator import Evaluator
     from deephyper.search.hps import CBO
-    from deephyper.evaluator.callback import ProfilingCallback, LoggingCallback
+    from deephyper.evaluator.callback import ProfilingCallback, LoggerCallback
 
     os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     log_dir = "out"
 
     profiler = ProfilingCallback()
-    logger = LoggingCallback()
+    logger = LoggerCallback()
 
     # Creating the Evaluator
     with Evaluator.create(
