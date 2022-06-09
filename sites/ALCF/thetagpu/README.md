@@ -2,15 +2,29 @@
 
 ## Installation
 
-To install DeepHyper on ThetaGPU, once logged on the Theta system, execute the following commands (replace the ``$PROJECT_NAME`` with the name of your project allocation, e-g: ``-A datascience``):
+To install DeepHyper on ThetaGPU, once logged on the Theta system, execute the following commands (replace the ``$PROJECT_NAME`` with the name of your project allocation, e-g: ``-A datascience``). Clone the repository:
+
 
 ```console
-# locate yourself in the thetagpu folder
-cd sites/ALCF/thetagpu/
-# create the build folder ; this is where the conda environment will be installed
-mkdir build && cd build
-# submit the installation process
-qsub-gpu -A $PROJECT_NAME ../install/install.sh
+$ git clone https://github.com/deephyper/quickstart.git deephyper-quickstart
+```
+
+Move to the `thetagpu` folder:
+
+```console
+$ cd deephyper-quickstart/sites/ALCF/thetagpu/
+```
+
+Create the build folder ; this is where the conda environment will be installed:
+
+```console
+$ mkdir build && cd build
+```
+
+Submit a job to trigger the installation process:
+
+```console
+$ qsub-gpu -A $PROJECT_NAME ../install/install.sh
 ```
 
 This will submit a job on ThetaGPU, wait for it to finish (you can follow the installation with the ``install.*`` cobaltlog files which will be created in the current ``build/`` folder).
