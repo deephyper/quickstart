@@ -3,6 +3,7 @@
 #COBALT -n 1
 #COBALT -t 30
 #COBALT --attrs filesystems=home,grand,eagle,theta-fs0
+#COBALT -O job_install
 
 . /etc/profile
 
@@ -24,5 +25,5 @@ MPICC=mpicc python setup.py install
 cd ..
 
 # Copy activation of environment file
-cp ../install/env/thetagpu.sh activate-dhenv.sh
+cp ../install/env.sh activate-dhenv.sh
 echo "conda activate $PWD/dhenv/" >> activate-dhenv.sh
