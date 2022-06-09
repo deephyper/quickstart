@@ -13,9 +13,6 @@ def run(config):
 
 if __name__ == "__main__":
     import os
-    import mpi4py
-    from mpi4py import MPI
-    import numpy as np
 
     from deephyper.evaluator import Evaluator
     from deephyper.search.hps import CBO
@@ -23,24 +20,10 @@ if __name__ == "__main__":
 
     os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
-    mpi4py.rc.initialize = False
-    mpi4py.rc.threads = True
-    mpi4py.rc.thread_level = "multiple"
-    # mpi4py.rc.recv_mprobe = False
-
-    if not MPI.Is_initialized():
-        MPI.Init_thread()
-
-    comm = MPI.COMM_WORLD
-    rank = comm.Get_rank()
-    size = comm.Get_size()
-
-    timeout = None
-    max_evals = 100
+    timeout = 10*60 # in seconds
+    max_evals = None
     random_state = 42
-
-    rs = np.random.RandomState(random_state)
-    rank_seed = rs.randint(low=0, high=2**32, size=size)[rank]
+    log_dir = "out"
 
     profiler = ProfilingCallback()
     logger = LoggingCallback()
@@ -60,9 +43,9 @@ if __name__ == "__main__":
                 hp_problem,
                 evaluator,
                 multi_point_strategy="qUCB",
-                random_state=rank_seed,
-                log_dir="out",
+                random_state=random_state,
+                log_dir=log_dir,
             )
 
             # Executing the Search
-            results = search.search(max_evals=max_evals)
+            results = search.search(timeout=timeout)
