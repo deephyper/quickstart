@@ -23,4 +23,4 @@ cd ..
 
 # Copy activation of environment file
 cp ../install/env.sh activate-dhenv.sh
-echo "conda activate $PWD/dhenv/" >> activate-dhenv.sh
+echo "\nconda activate $PWD/dhenv/" >> activate-dhenv.sh
