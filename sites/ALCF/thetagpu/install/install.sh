@@ -13,7 +13,7 @@ conda create -p dhenv --clone base -y
 conda activate dhenv/
 
 # Install DeepHyper
-pip install -e deephyper
+pip install deephyper
 
 # Install mpi4py
 git clone https://github.com/mpi4py/mpi4py.git
