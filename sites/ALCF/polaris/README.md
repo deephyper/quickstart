@@ -31,14 +31,14 @@ This will submit a job on Polaris, wait for it to finish (you can follow the ins
 
 ## Execution
 
-To execute the search, first locate yourself in ``sites/ALCF/thetagpu/src/`` :
+To execute the search, first locate yourself in ``sites/ALCF/polaris/src/`` :
 
 ```console
-$ cd sites/ALCF/thetagpu/src/
+$ cd sites/ALCF/polaris/src/
 ```
 
 You then simply have to submit the ``job-script.sh`` script (again replace the ``$PROJECT_NAME`` with the name of your project allocation, e-g: ``-A datascience``):
 
 ```console
-$ qsub-gpu -A $PROJECT_NAME job-script.sh
+$ qsub -A $PROJECT_NAME job-script.sh
 ```
